@@ -1,0 +1,4 @@
+# イメージ(のビルド)に持ち込まないもの
+node_modules
+dist
+.git

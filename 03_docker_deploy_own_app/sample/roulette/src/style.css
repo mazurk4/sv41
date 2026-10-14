@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    padding: 24px 16px;
+    font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    text-align: center;
+    background: #fdf6ec;
+    color: #333;
+}
+
+h1 {
+    color: #d35400;
+    margin: 0 0 24px;
+}
+
+.wheel-area {
+    --size: min(80vw, 60vh, 480px);
+    position: relative;
+    width: var(--size);
+    margin: 0 auto;
+}
+
+/* 上にある▼(当たりの位置) */
+.pointer {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    z-index: 1;
+    transform: translateX(-50%);
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 32px solid #d35400;
+}
+
+.wheel {
+    position: relative;
+    width: var(--size);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    transition: transform 5s cubic-bezier(0.15, 0.7, 0.1, 1);
+}
+
+/* 名前は中心から外に向かって並べる */
+.label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 0;
+    transform-origin: 0 0;
+    transform: rotate(calc(var(--angle) - 90deg));
+}
+
+.label span {
+    position: absolute;
+    right: 10%;
+    transform: translateY(-50%);
+    font-size: var(--font-size);
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.result {
+    min-height: 1.5em;
+    margin: 24px 0 16px;
+    font-size: 28px;
+}
+
+.result strong {
+    color: #d35400;
+    font-size: 40px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.buttons button {
+    padding: 12px 32px;
+    margin: 0 8px;
+    border: none;
+    border-radius: 8px;
+    background: #d35400;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.buttons button.secondary {
+    background: #888;
+}
+
+.buttons button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.history {
+    margin-top: 32px;
+}
+
+.history h2 {
+    font-size: 18px;
+    color: #888;
+}
+
+footer {
+    margin-top: 32px;
+    font-size: 12px;
+    color: #999;
+}

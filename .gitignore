@@ -1,0 +1,13 @@
+# ライブラリ・ビルド結果(手元で npm install / npm run build したときにできる)
+node_modules/
+dist/
+
+# パスワードなどを書く設定ファイル
+.env
+.env.*
+
+# OS / エディタ
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
