@@ -44,8 +44,10 @@ docker run -d -p 8080:80 --name roulette roulette
 ファイルを保存してブラウザを再読み込みするだけで、すぐに反映されます(build し直す必要はありません)。
 
 ```sh
-docker run -d -p 8081:80 -v "$(pwd)/src:/var/www/html" --name roulette-dev roulette
+docker run -d -p 8081:80 -v "${PWD}/src:/var/www/html" --name roulette-dev roulette
 ```
+
+`${PWD}` は「今いるフォルダ」という意味です(Mac でも Windows の PowerShell でも同じ書き方で動きます)。
 
 ブラウザで http://localhost:8081 を開き、`src/members.txt` を編集 → 再読み込みしてみよう。
 
