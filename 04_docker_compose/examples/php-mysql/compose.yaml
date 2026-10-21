@@ -1,0 +1,50 @@
+# PHP + MySQL の作品用
+#
+# 使い方:
+#   1. 自分の作品のフォルダ(index.php がある場所)に、この compose.yaml と db フォルダをコピーする
+#   2. 第3回の Dockerfile(examples/php)の
+#        # RUN docker-php-ext-install mysqli pdo_mysql
+#      の先頭の # を外す
+#   3. db/init.sql に、自分の作品のテーブルを作るSQLを書く
+#   4. 作品のDB接続部分を、下の db の設定に合わせて書き換える
+#        ホスト名: localhost → db
+#        DB名 / ユーザー名 / パスワード: 下の MYSQL_DATABASE / MYSQL_USER / MYSQL_PASSWORD
+#   5. docker compose up -d --build
+#      → 作品:       http://localhost:8080
+#      → phpMyAdmin: http://localhost:8081
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      # 開発中なので作品のフォルダをマウントする(保存するだけで反映される)
+      - .:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      # ↓ 自分の作品に合わせて変えてよい
+      MYSQL_DATABASE: myapp
+      MYSQL_USER: sv41
+      MYSQL_PASSWORD: sv41pass
+    volumes:
+      - db-data:/var/lib/mysql
+      # db フォルダの .sql ファイルが、初回起動時に実行される
+      - ./db:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
+
+volumes:
+  db-data:

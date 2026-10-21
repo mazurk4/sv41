@@ -1,0 +1,52 @@
+# WordPress(WordPress + MySQL + phpMyAdmin)
+#
+# 使い方(このフォルダの中で実行):
+#   docker compose up -d
+#   → WordPress:  http://localhost:8080
+#   → phpMyAdmin: http://localhost:8081
+#   ※ 初回はMySQLの準備に30秒ほどかかる
+
+services:
+  # WordPress(PHP + Apache + WordPress本体が入った公式イメージ)
+  wordpress:
+    image: wordpress:7
+    ports:
+      - "8080:80"
+    environment:
+      # 接続先のDB。localhost ではなく、下のサービス名 db で呼ぶ
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: sv41
+      WORDPRESS_DB_PASSWORD: sv41pass
+    volumes:
+      # WordPressのファイル(テーマ・プラグイン・アップロードした画像)の保存場所
+      - wp-data:/var/www/html
+    depends_on:
+      - db
+
+  # MySQL(記事・ユーザー・設定が入る)
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: sv41
+      MYSQL_PASSWORD: sv41pass
+    volumes:
+      # データの保存場所(コンテナを消しても残る)
+      - db-data:/var/lib/mysql
+
+  # phpMyAdmin(ブラウザでDBの中身を見る)
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
+
+# Docker が管理するデータの保存場所
+volumes:
+  wp-data:
+  db-data:

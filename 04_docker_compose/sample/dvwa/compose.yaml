@@ -1,0 +1,38 @@
+# DVWA(Damn Vulnerable Web Application)— 第5回「セキュリティ入門①」で使う
+#
+# わざと脆弱性(セキュリティの穴)を残して作られた、攻撃の練習用のWebアプリ。
+# 自分のPCの中だけで動かし、絶対にインターネットや学校のネットワークに公開しないこと。
+#
+# 使い方(このフォルダの中で実行):
+#   docker compose up -d
+#   → DVWA: http://localhost:8082
+#   ※ 初回はMySQLの準備に30秒ほどかかる
+
+services:
+  dvwa:
+    image: ghcr.io/digininja/dvwa:latest
+    ports:
+      # 127.0.0.1: を付けると「このPCの中からだけ」つながる(ほかのPCからは見えない)
+      - "127.0.0.1:8082:80"
+    environment:
+      DB_SERVER: db
+      DB_DATABASE: dvwa
+      DB_USER: dvwa
+      DB_PASSWORD: dvwapass
+      # 攻撃がいちばん効きやすいレベルから始める(DVWA Security のページで変えられる)
+      DEFAULT_SECURITY_LEVEL: low
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: dvwa
+      MYSQL_USER: dvwa
+      MYSQL_PASSWORD: dvwapass
+    volumes:
+      - dvwa-data:/var/lib/mysql
+
+volumes:
+  dvwa-data:

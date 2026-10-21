@@ -1,0 +1,17 @@
+# コンテナ1つだけの作品用(HTML / PHP / Vite / Node.js)
+#
+# 第3回で作った Dockerfile と同じフォルダに置いて使う
+#   docker compose up -d --build
+#   → http://localhost:8080
+#
+# 第3回の次のコマンドと同じことをしている
+#   docker build -t my-app .
+#   docker run -d -p 8080:80 --name my-app my-app
+
+services:
+  app:
+    # このフォルダの Dockerfile から build する
+    build: .
+    ports:
+      # Node.js の作品は "8080:3000" にする
+      - "8080:80"
