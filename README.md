@@ -22,3 +22,4 @@ Git が使えない場合は、GitHub の「Code」→「Download ZIP」でダ�
 | [03_docker_deploy_own_app](03_docker_deploy_own_app/) | 第3回: 自分の作品をDockerで動かす |
 | [04_docker_compose](04_docker_compose/) | 第4回: Docker Compose |
 | [06_operation_security_defense](06_operation_security_defense/) | 第6回: セキュリティ入門② 守りを固める(パッチ・防御のレイヤー / 課題②の回答のひな形) |
+| [07_git_branch_pr](07_git_branch_pr/) | 第7回: Git/GitHub実務フロー① ブランチ運用・PR |
