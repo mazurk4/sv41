@@ -1,0 +1,49 @@
+# 一言掲示板(第6回の題材)— わざと穴を残してある練習用アプリ
+#
+# 自分のPCの中だけで動かし、絶対にインターネットや学校のネットワークに公開しないこと。
+#
+# 使い方(このフォルダの中で実行):
+#   docker compose up -d --build
+#   → 掲示板: http://localhost:8083
+#   ※ 初回はMySQLの準備に30秒ほどかかる
+
+services:
+  web:
+    build: .
+    ports:
+      # ステップ3: WAF を置いたら、この ports の2行を消す
+      #                   (WAF を通らずに掲示板へ直接入れる「裏口」をなくす)
+      - "127.0.0.1:8083:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.4
+    # ports を書いていない = 外からはつながらない。同じ compose の web からだけ db という名前で呼べる
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: board
+      MYSQL_USER: board
+      MYSQL_PASSWORD: boardpass
+    volumes:
+      - board-data:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d
+
+  # ステップ2: 下の waf の行の先頭の「# 」を外すと、掲示板の前に WAF が置かれる
+  #   VS Code なら、行を選んで Ctrl + /(Mac は Cmd + /)でまとめて外せる
+  #   → WAF 経由の掲示板: http://localhost:8085
+  # waf:
+  #   # ModSecurity(WAF本体)+ OWASP CRS(攻撃を見分けるルール集)
+  #   image: owasp/modsecurity-crs:nginx-alpine
+  #   ports:
+  #     - "127.0.0.1:8085:8080"
+  #   environment:
+  #     # 検査に合格したリクエストを渡す先(掲示板)
+  #     BACKEND: http://web:80
+  #   depends_on:
+  #     - web
+
+volumes:
+  board-data:
