@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>席のご予約 | 喫茶こもれび</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reserve.css">
+</head>
+<body>
+  <header>
+    <h1>喫茶こもれび</h1>
+    <p class="catch">席のご予訳</p>
+  </header>
+
+  <main>
+    <p id="hello"></p>
+
+    <section>
+      <h2>ご予約について</h2>
+      <p>6名さままで、お席をご予約いただけます。</p>
+    </section>
+
+    <section>
+      <h2>ご予約フォーム</h2>
+      <form class="reserve" action="http://test.example.com/reserve" method="post">
+        <input type="text" name="name" placeholder="お名前">
+        <input type="text" name="tel" placeholder="電話番号">
+
+        <select name="day">
+          <option>月曜日</option>
+          <option>火曜日</option>
+          <option>水曜日</option>
+          <option>木曜日</option>
+          <option>金曜日</option>
+          <option>土曜日</option>
+          <option>日曜日</option>
+        </select>
+
+        <select name="time">
+          <option>10:00</option>
+          <option>13:00</option>
+          <option>16:00</option>
+          <option>19:00</option>
+        </select>
+
+        <select name="people">
+          <option>1名</option>
+          <option>2名</option>
+          <option>3名</option>
+          <option>4名</option>
+        </select>
+
+        <button type="submit">予約する</button>
+      </form>
+    </section>
+
+    <p><a href="index.html">トップページへ戻る</a></p>
+  </main>
+
+  <footer>
+    <p>&copy; 喫茶こもれび</p>
+  </footer>
+
+  <script>
+    // URL の ?name=〇〇 を見て、あいさつを出す
+    const name = new URLSearchParams(location.search).get('name');
+    if (name) {
+      document.getElementById('hello').innerHTML = 'ようこそ、' + name + ' さま';
+      console.log('debug: name = ' + name);
+    }
+  </script>
+</body>
+</html>
