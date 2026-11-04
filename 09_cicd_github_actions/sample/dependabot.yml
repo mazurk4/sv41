@@ -1,0 +1,7 @@
+# ワークフローで使っている部品が古くなったら、更新の PR を作ってもらう
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
