@@ -24,4 +24,5 @@ Git が使えない場合は、GitHub の「Code」→「Download ZIP」でダ�
 | [06_operation_security_defense](06_operation_security_defense/) | 第6回: セキュリティ入門② 守りを固める(パッチ・防御のレイヤー / 課題②の回答のひな形) |
 | [07_git_branch_pr](07_git_branch_pr/) | 第7回: Git/GitHub実務フロー① ブランチ運用・PR |
 | [08_git_code_review](08_git_code_review/) | 第8回: Git/GitHub実務フロー② コードレビュー演習 |
-| [09_cicd_github_actions](09_cicd_github_actions/) | 第9回: CI/CD入門(GitHub Actions) |
+| [09_cicd_github_actions](09_cicd_github_actions/) | 第9回: CI/CD入門(GitHub Actions)・`cafe-site` の公開 |
+| [10_cloudflare_deploy](10_cloudflare_deploy/) | 第10回: 自分の作品をCloudflareにデプロイしてみる |

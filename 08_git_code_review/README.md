@@ -211,3 +211,8 @@ docker compose down
 ```
 
 GitHub のリポジトリは消さないでください(課題③で PR の URL を提出します)。
+
+## 次回までに
+
+Cloudflare のアカウントを作っておいてください(無料): https://dash.cloudflare.com/sign-up
+確認のメールを開いて、承認するところまで済ませます。

@@ -1,6 +1,6 @@
 # 第9回: CI/CD入門(GitHub Actions)
 
-push したら、機械が自動でテストするようにします。第7回から使っている **自分の `cafe-site` リポジトリ** を使います。今日は1人で進めます。
+push したら機械が自動でテストして、合格したものが世界に公開されるようにします。第7回から使っている **自分の `cafe-site` リポジトリ** を使います。今日は1人で進めます。
 
 ## フォルダ構成
 
@@ -17,6 +17,8 @@ push したら、機械が自動でテストするようにします。第7回�
 
 - 配布資料を最新にする(`git pull`)
 - `docker pull node:24-alpine`
+- Cloudflare のアカウントを作る(無料): https://dash.cloudflare.com/sign-up
+- 確認のメールを開いて、承認する
 
 ## ハンズオン① 最初のワークフロー
 
@@ -112,7 +114,67 @@ push したら、機械が自動でテストするようにします。第7回�
    git branch -d test/break
    ```
 
-## ハンズオン④ 自分でテストを書く
+## ハンズオン④ `cafe-site` を公開する
+
+先に、自分の main の `check` が緑であることを確かめてください。
+
+### GitHub とつなぐ
+
+1. Cloudflare で **Workers & Pages** → **Create application**
+2. **Pages** → **Connect to Git** → **GitHub** を選ぶ
+3. GitHub の画面で **Only select repositories** を選び、`cafe-site` だけを許可する
+4. **Install & Authorize** のあと、`cafe-site` を選んで **Begin setup**
+
+### 設定して公開する
+
+| 項目 | 入れる値 |
+| --- | --- |
+| Project name | `cafe-ユーザー名`(URL の一部。あとから変えられない) |
+| Production branch | `main` |
+| Framework preset | `None` |
+| Build command | `exit 0` |
+| Build output directory | `public` |
+
+**Save and Deploy** のあと、出てきた URL を開く。自分のスマホでも開く。
+
+### push で本番を変える
+
+1. ブランチを切る
+
+   ```sh
+   git switch main
+   git pull
+   git switch -c feature/notice
+   ```
+
+2. `public/index.html` のお知らせに1行足す
+
+   ```html
+   <li><span class="date">11/01</span> このサイトは授業の練習用です。実在のお店ではありません</li>
+   ```
+
+3. push する
+
+   ```sh
+   git add public/index.html
+   git commit -m "練習用のサイトだと分かるようにする"
+   git push -u origin feature/notice
+   ```
+
+4. PR を作って、`check` が緑になるのを待つ
+5. Cloudflare の **Deployments** を開き、**Preview** の URL で確かめる
+   例: `https://feature-notice.cafe-ユーザー名.pages.dev`
+6. 本番の URL にはまだ出ていないことを確かめる
+7. PR をマージして、1分ほど待つ。本番の URL を開くと変わっている
+8. 手元を合わせる
+
+   ```sh
+   git switch main
+   git pull
+   git branch -d feature/notice
+   ```
+
+## (任意)自分でテストを書く
 
 1. ブランチを切る
 
@@ -173,7 +235,11 @@ git push -u origin ci/add-dependabot
 | `check` が候補に出ない | ワークフローが一度も動いていない。入力欄に `check` と打って追加する |
 | `mkdir` で「すでにある」と言われる | そのまま次へ進んでよい |
 | `docker run` で `tests` が見つからない | `cafe-site` のフォルダで実行しているか確かめる |
+| Cloudflare の一覧に `cafe-site` が出ない | GitHub の **Settings → Applications** で Cloudflare Pages の **Configure** を開き、`cafe-site` を許可する |
+| サイトが開かない | 1分ほど待つ。Build output directory が `public` か確かめる |
+| マージしたのに本番が変わらない | Cloudflare の **Deployments** で、main のデプロイが成功しているか見る。ブラウザを再読み込みする |
+| 画面の表示が手順と違う | 画面が変わっていることがある。公式の案内を見る: https://developers.cloudflare.com/pages/get-started/git-integration/ |
 
 ## 片付け
 
-GitHub のリポジトリは消さないでください。
+GitHub のリポジトリと、Cloudflare のプロジェクトは消さないでください。
