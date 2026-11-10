@@ -26,3 +26,4 @@ Git が使えない場合は、GitHub の「Code」→「Download ZIP」でダ�
 | [08_git_code_review](08_git_code_review/) | 第8回: Git/GitHub実務フロー② コードレビュー演習 |
 | [09_cicd_github_actions](09_cicd_github_actions/) | 第9回: CI/CD入門(GitHub Actions)・`cafe-site` の公開 |
 | [10_cloudflare_deploy](10_cloudflare_deploy/) | 第10回: 自分の作品をCloudflareにデプロイしてみる |
+| [10_5_cloudflare_workers](10_5_cloudflare_workers/) | 第10.5回: Cloudflare Workers で「動くサイト」にする(営業中の表示・予約の確認) |
