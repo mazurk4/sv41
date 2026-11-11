@@ -32,18 +32,20 @@
 
 ### ファイルを足す
 
+下のコマンドの `~/cafe-site` と `~/sv41` は、自分が置いた場所に合わせて書き換えてください(`~` はホームフォルダ)。
+
 ```sh
-# cafe-site のフォルダで
+cd ~/cafe-site
 git switch main
 git pull
 git switch -c feature/workers
 
-# 配布資料(sv41)のフォルダで
+cd ~/sv41
 mkdir ~/cafe-site/src
 cp 10_5_cloudflare_workers/sample/step1/wrangler.jsonc ~/cafe-site/
 cp 10_5_cloudflare_workers/sample/step1/src/index.js ~/cafe-site/src/
 
-# cafe-site のフォルダで
+cd ~/cafe-site
 git add wrangler.jsonc src
 git commit -m "Workers で公開する設定を追加"
 git push -u origin feature/workers
@@ -86,12 +88,12 @@ GitHub で PR を作り、`check` が緑になったらマージする。
 ### ファイルを入れる
 
 ```sh
-# cafe-site のフォルダで
+cd ~/cafe-site
 git switch main
 git pull
 git switch -c feature/reserve
 
-# 配布資料(sv41)のフォルダで
+cd ~/sv41
 cp 10_5_cloudflare_workers/sample/step2/src/index.js ~/cafe-site/src/
 cp 10_5_cloudflare_workers/sample/step2/public/* ~/cafe-site/public/
 ```
@@ -116,7 +118,7 @@ cp 10_5_cloudflare_workers/sample/step2/public/* ~/cafe-site/public/
 ```
 
 ```sh
-# cafe-site のフォルダで
+cd ~/cafe-site
 git status
 git add .
 git commit -m "営業中の表示と、予約の確認を追加"

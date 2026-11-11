@@ -27,3 +27,4 @@ Git が使えない場合は、GitHub の「Code」→「Download ZIP」でダ�
 | [09_cicd_github_actions](09_cicd_github_actions/) | 第9回: CI/CD入門(GitHub Actions)・`cafe-site` の公開 |
 | [10_cloudflare_deploy](10_cloudflare_deploy/) | 第10回: 自分の作品をCloudflareにデプロイしてみる |
 | [10_5_cloudflare_workers](10_5_cloudflare_workers/) | 第10.5回: Cloudflare Workers で「動くサイト」にする(営業中の表示・予約の確認) |
+| [11_cicd_auto_deploy](11_cicd_auto_deploy/) | 第11回: CI/CD で自動デプロイ化(GitHub Pages・Dependabot・CodeQL、課題⑤。自分の作品用は own-work) |
