@@ -14,7 +14,7 @@
     ├── cafe-site/              ← 課題⑤
     │   ├── deploy.yml          ← テストして、GitHub Pages に公開する(.github/workflows/ に置く)
     │   └── dependabot.yml      ← 部品の更新の PR を作ってもらう。7日待つ(.github/ に置く)
-    └── own-work/               ← 発展・第14回(自分の作品)
+    └── own-work/               ← 発展・総合演習(自分の作品)
         ├── deploy_static.yml   ← HTML / CSS / JS だけの作品
         ├── deploy_vite.yml     ← Vite でビルドする作品
         └── tests/
@@ -129,9 +129,9 @@ PR → `check` が緑 → マージ。1〜2分待って、**Pull requests** を�
 | Dependabot の PR が来ない | `dependabot.yml` が **`.github/`** の直下にあるか。**Insights → Dependency graph → Dependabot** で状態を見る |
 | `cp` で「ファイルがない」 | `cd` で配布資料のフォルダにいるか。`ls` で `11_cicd_auto_deploy` が見えるか |
 
-## 発展(任意): 自分の作品を GitHub Pages に公開する(第14回で使う)
+## 発展(任意): 自分の作品を GitHub Pages に公開する(総合演習で使う)
 
-課題ではありません。第14回の総合演習で、自分の作品を「push だけで届く」状態にするときに使います。
+課題ではありません。後期の終わりの総合演習で、自分の作品を「push だけで届く」状態にするときに使います。
 
 ### 1. 公開リポジトリを用意する
 
