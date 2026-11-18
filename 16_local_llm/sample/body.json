@@ -1,0 +1,6 @@
+{
+  "model": "ここに、LM Studio の Developer の画面に出ているモデルの名前を入れる",
+  "messages": [
+    { "role": "user", "content": "喫茶店の名前を3つ考えて" }
+  ]
+}
