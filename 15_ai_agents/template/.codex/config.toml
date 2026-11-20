@@ -1,0 +1,14 @@
+# Codex の、このリポジトリだけの設定
+# Codex でこのフォルダを「信頼する」にしたときだけ読まれる
+
+# MCP: Playwright(ブラウザ)を Docker の中で動かす(.mcp.json と同じ中身)
+# 使わないなら、この下を消す。8080 は自分の作品のポート番号に書き換える
+[mcp_servers.playwright]
+command = "docker"
+args = [
+  "run", "-i", "--rm", "--init",
+  "-v", "./screenshots:/out", "-w", "/out",
+  "mcr.microsoft.com/playwright/mcp:v0.0.85",
+  "--isolated", "--ignore-roots", "--output-dir", "/out",
+  "--allowed-origins", "http://host.docker.internal:8080",
+]

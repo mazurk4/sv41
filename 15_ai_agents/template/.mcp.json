@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm", "--init",
+        "-v", "./screenshots:/out", "-w", "/out",
+        "mcr.microsoft.com/playwright/mcp:v0.0.85",
+        "--isolated", "--ignore-roots", "--output-dir", "/out",
+        "--allowed-origins", "http://host.docker.internal:8080"
+      ]
+    }
+  }
+}

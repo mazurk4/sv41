@@ -29,5 +29,5 @@ Git が使えない場合は、GitHub の「Code」→「Download ZIP」でダ�
 | [10_5_cloudflare_workers](10_5_cloudflare_workers/) | 第10.5回: Cloudflare Workers で「動くサイト」にする(営業中の表示・予約の確認) |
 | [11_cicd_auto_deploy](11_cicd_auto_deploy/) | 第11回: CI/CD で自動デプロイ化(GitHub Pages・Dependabot・CodeQL、課題⑤。自分の作品用は own-work) |
 | [14_ai_prompting](14_ai_prompting/) | 第14回: AIに上手に頼む(喫茶こもれびのバグを、無料のチャットAIと直す・AIとセキュリティ) |
-| [15_ai_agents](15_ai_agents/) | 第15回: AIエージェントを使いこなす(AI への説明書 AGENTS.md / CLAUDE.md とスキルのひな形) |
+| [15_ai_agents](15_ai_agents/) | 第15回: AIエージェントを使いこなす(AI と作るリポジトリのテンプレート: AGENTS.md / CLAUDE.md・スキル・サブエージェント・MCP・権限の設定) |
 | [16_local_llm](16_local_llm/) | 第16回: 自分のPCでAIを動かす(家で試したい人向けの手順と注意) |
