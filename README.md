@@ -31,3 +31,4 @@ Git が使えない場合は、GitHub の「Code」→「Download ZIP」でダ�
 | [14_ai_prompting](14_ai_prompting/) | 第14回: AIに上手に頼む(喫茶こもれびのバグを、無料のチャットAIと直す・AIとセキュリティ) |
 | [15_ai_agents](15_ai_agents/) | 第15回: AIエージェントを使いこなす(AI と作るリポジトリのテンプレート: AGENTS.md / CLAUDE.md・スキル・サブエージェント・MCP・権限の設定) |
 | [16_local_llm](16_local_llm/) | 第16回: 自分のPCでAIを動かす(家で試したい人向けの手順と注意) |
+| [17_infra_proposal](17_infra_proposal/) | 第17・18回: サーバー構成の提案書(課題⑥・評価課題。お客さんの資料・価格表・フォーマット) |
